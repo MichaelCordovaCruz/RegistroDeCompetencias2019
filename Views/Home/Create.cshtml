@@ -1,0 +1,84 @@
+@model RegistroDeCompetencia2019.ViewModels.CreateHomeVM
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<form asp-controller="Home" asp-action="Create" method="POST">
+  <div asp-validation-summary="All" class="text-danger"></div>
+
+  <div class="form-row">
+
+    <!-- Estudiante Id -->
+    <div class="form-group col-md-6">
+      <label asp-for="Estudiante.Id" class="control-label"></label>
+      <input asp-for="Estudiante.Id" class="form-control" />
+      <span asp-validation-for="Estudiante.Id" class="text-danger"></span>
+    </div>
+
+    <!-- Etudiante Email -->
+    <div class="form-group col-md-6">
+      <label asp-for="Estudiante.Email" class="control-label"></label>
+      <input asp-for="Estudiante.Email" class="form-control" />
+      <span asp-validation-for="Estudiante.Email" class="text-danger"></span>
+    </div>
+  </div>
+
+  <div class="form-row">
+
+    <!-- Etudiante Nombre -->
+    <div class="form-group col-md-4">
+      <label asp-for="Estudiante.Nombre" class="control-label"></label>
+      <input asp-for="Estudiante.Nombre" class="form-control" />
+      <span asp-validation-for="Estudiante.Nombre" class="text-danger"></span>
+    </div>
+
+    <!-- Etudiante Apellido Paterno -->
+    <div class="form-group col-md-4">
+      <label asp-for="Estudiante.ApellidoPaterno" class="control-label"></label>
+      <input asp-for="Estudiante.ApellidoPaterno" class="form-control" />
+      <span asp-validation-for="Estudiante.ApellidoPaterno" class="text-danger"></span>
+    </div>
+
+    <!-- Etudiante Apellido Materno -->
+    <div class="form-group col-md-4">
+      <label asp-for="Estudiante.ApellidoMaterno" class="control-label"></label>
+      <input asp-for="Estudiante.ApellidoMaterno" class="form-control" />
+      <span asp-validation-for="Estudiante.ApellidoMaterno" class="text-danger"></span>
+    </div>
+  </div>
+
+  <div class="form-row">
+
+    <!-- Recinto -->
+    <div class="form-group col-md-6">
+      <label asp-for="Estudiante.RecintoId" class="control-label"></label>
+      <div class="input-group mb-3">
+        <select asp-for="Estudiante.RecintoId" class="custom-select form-control">
+            <option disabled selected value="@null">Choose...</option>
+            @foreach (var item in Model.Recintos)
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </select>
+      </div>
+      <span asp-validation-for="Estudiante.RecintoId" class="text-danger"></span>
+    </div>
+  </div>
+
+  <div class="form-row">
+
+      <!-- Submit Button -->
+      <div class="form-group">      
+        <input type="submit" value="Register" class="btn btn-primary" />  
+      </div>
+    </div>
+</form>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
