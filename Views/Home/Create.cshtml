@@ -5,8 +5,11 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="pt-4"> Bienvenidos</h1>
+    <p class="text-center">
+      En esta pagina es para registrarse en las competencias de computadora de la Universidad Interamericana. <br/>
+      Por favor asegurese de leer las reglas de las mismas antes de registrarse
+    </p>
 </div>
 
 <form asp-controller="Home" asp-action="Create" method="POST">
@@ -71,14 +74,21 @@
     </div>
   </div>
 
-  <div class="form-row">
+  <div class="form-row mb-5">
+
+      <div class="form-group col-md-10">      
+        <input type="checkbox" value="" class="" />  
+        <label>He leido los reglamentos de la competencia y estoy de acuerdo con los mismos</label>
+      </div>
 
       <!-- Submit Button -->
-      <div class="form-group">      
-        <input type="submit" value="Register" class="btn btn-primary" />  
+      <div class="form-group col-md-2">      
+        <input type="submit" value="Registrar" class="btn btn-success" />  
       </div>
     </div>
 </form>
+
+<a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.
 
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
