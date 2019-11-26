@@ -4,9 +4,26 @@
     ViewData["Title"] = "Home Page";
 }
 
+<link rel="stylesheet" href="~/css/Create.css" />
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+  <!-- Images -->
+  <div class="row p-3">
+    <div class="col-4">
+      <img src="~/images/logos/logo-coca-cola-actualversion2WEB.png" class="images" alt="...">
+    </div>
+    <div class="col-4">
+      <img src="~/images/logos/logo-coca-cola-actual.png" class="images" alt="...">
+    </div>
+    <div class="col-4">
+      <img src="~/images/logos/LOGO-INTERemprendeWEB.png" class="images" alt="...">
+    </div>
+  </div>
+    <!-- Welcome Text -->
+    <p class="text-center">
+      Bienvenidos al registro de la competencia de ideas de negocio Inter Tiger Venture Competition. <br/>
+      Favor de completer los encasillados y al final seleccionar el botón REGISTRO.  
+    </p>
 </div>
 
 <form asp-controller="Home" asp-action="Create" method="POST">
@@ -70,13 +87,31 @@
       <span asp-validation-for="Estudiante.RecintoId" class="text-danger"></span>
     </div>
   </div>
-  
-  <div class="form-row">
+
+  <div class="text-center">
+      <p class="text-center">
+        Al seleccionar el botón de registro, acceptas las reglas de la competencia, términos y condiciones de uso y política de privacidad, <br /> 
+        Competencia organizada por la Universidad Interamericana de Puerto Rico y auspiciada por Coca-Cola Puerto Rico Bottlers, Inc. 
+      </p>
+  </div>
+
+  <div class="form-row mb-5">
+
+      <!-- <div class="form-group col-md-10">      
+        <input type="checkbox" value="" class="" />  
+        <label>He leido los reglamentos de la competencia y estoy de acuerdo con los mismos</label>
+      </div> -->
 
       <!-- Submit Button -->
-      <div class="form-group">      
-        <input type="submit" value="Register" class="btn btn-primary" />  
+      <div class="form-group col-md-2">      
+        <input type="submit" value="Registrar" class="btn btn-success" />  
       </div>
     </div>
-
 </form>
+
+
+
+<a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
