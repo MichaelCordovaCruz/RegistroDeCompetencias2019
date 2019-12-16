@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace RegistroDeCompetencia2019
+namespace RegistroDeCompetencia
 {
     public class Program
     {
@@ -20,7 +20,12 @@ namespace RegistroDeCompetencia2019
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    var port = Environment.GetEnvironmentVariable("PORT");
+                    
+                    webBuilder.UseStartup<Startup>()
+                    .UseUrls("http://*:"+port);
+
+                    //webBuilder.UseStartup<Startup>();
                 });
     }
 }

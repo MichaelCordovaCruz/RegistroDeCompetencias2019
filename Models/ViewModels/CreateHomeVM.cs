@@ -1,9 +1,7 @@
-using System;
-using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
-using RegistroDeCompetencia2019.Models;
+using RegistroDeCompetencia.Models;
 
-namespace RegistroDeCompetencia2019.ViewModels
+namespace RegistroDeCompetencia.ViewModels
 {
     public class CreateHomeVM
     {

@@ -1,8 +1,7 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
-namespace RegistroDeCompetencia2019.Models
+namespace RegistroDeCompetencia.Models
 {
     public class Recinto
     {

@@ -1,42 +1,42 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RegistroDeCompetencia2019.Models
+namespace RegistroDeCompetencia.Models
 {
     public class Estudiante
     {
         //Keys
         [Key]
         [DataType(DataType.Text)]
-        [Display(Name = "Numero De Estudiante")]
+        [Display(Name = "Número de estudiante")]
+        [Required(ErrorMessage="Número de estudiante es requerido")]
         public string Id { get; set; }
 
         [ForeignKey("Recinto")]
         [DataType(DataType.Text)]
-        [Display(Name = "Recinto Id")]
-        [Required(ErrorMessage="Recinto Id es Requirido")]
-        public int RecintoId { get; set; }
+        [Display(Name = "Recinto")]
+        [Required(ErrorMessage="Recinto es requerido")]
+        public int? RecintoId { get; set; }
 
         //Attributes
         [Display(Name = "Nombre")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage="Nombre es Requirido")]
+        [Required(ErrorMessage="Nombre es requerido")]
         public string Nombre { get; set; }
 
-        [Display(Name = "Apellido Paterno")]
+        [Display(Name = "Apellido paterno")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage="Apellido Paterno es Requirido")]
+        [Required(ErrorMessage="Apellido paterno es requerido")]
         public string ApellidoPaterno { get; set; }
 
-        [Display(Name = "Apellido Materno")]
+        [Display(Name = "Apellido materno")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage="Apellido Materno es Requirido")]
+        [Required(ErrorMessage="Apellido materno es requerido")]
         public string ApellidoMaterno { get; set; }
 
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
-        [Required(ErrorMessage="Email es Requirido")]
+        [Required(ErrorMessage="Email es requerido")]
         public string Email { get; set; }
 
 

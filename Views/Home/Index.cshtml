@@ -1,4 +1,4 @@
-﻿@model RegistroDeCompetencia2019.ViewModels.CreateHomeVM
+﻿@model RegistroDeCompetencia.ViewModels.CreateHomeVM
 
 @{
     ViewData["Title"] = "Home Page";
@@ -6,28 +6,35 @@
 
 <link rel="stylesheet" href="~/css/Create.css" />
 
-<div class="imagesrow uicoloryellow">
+<div class="uicoloryellow">
   <!-- Images -->
   <div class="row p-3">
-    <div class="col-6 m-auto">
+    <div class="col-1 d-none d-md-block"></div>
+
+    <div class="col-md-4 col-6 my-auto">
       <img src="~/images/logos/logo-coca-cola-actualversion2WEB.png" class="images w-auto" alt="...">
     </div>
-    <div class="col-6 m-auto">
+
+    <div class="col-sm-2 d-none d-md-block"></div>
+
+    <div class="col-md-4 col-6 my-auto">
       <img src="~/images/logos/logo-coca-cola-actual.png" class="images w-auto" alt="...">
     </div>
+
+    <div class="col-1 d-none d-md-block"></div>
   </div>
 </div>
 
 <div class="text-center mt-4">
     <!-- Welcome Text -->
     <p class="text-center">
-      Bienvenidos al registro de la competencia de ideas de negocio Inter Tiger Venture Competition. <br/>
-      Favor de completer los encasillados y al final seleccionar el botón REGISTRO.  
+      Bienvenidos al registro de la competencia de ideas de negocio Inter Tiger Venture Competition 2020. <br/>
+      Favor de completar los encasillados y al final seleccionar el botón de REGISTRAR.  
     </p>
 </div>
 
-<form asp-controller="Home" asp-action="Create" method="POST">
-  <div asp-validation-summary="All" class="text-danger"></div>
+<form asp-controller="Home" asp-action="Index" method="POST">
+  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
   <div class="form-row">
 
@@ -77,7 +84,7 @@
       <label asp-for="Estudiante.RecintoId" class="control-label"></label>
       <div class="input-group mb-3">
         <select asp-for="Estudiante.RecintoId" class="custom-select form-control">
-            <option disabled selected value="@null">Choose...</option>
+            <option disabled selected value="@null">Escoge...</option>
             @foreach (var item in Model.Recintos)
             {
                 <option value="@item.Id">@item.Nombre</option>
@@ -90,30 +97,23 @@
 
   <div class="text-center">
       <p class="text-center">
-        Al seleccionar el botón de registro, acceptas las reglas de la competencia, términos y condiciones de uso y política de privacidad, <br /> 
-        Competencia organizada por la Universidad Interamericana de Puerto Rico y auspiciada por Coca-Cola Puerto Rico Bottlers, Inc. 
+        Al seleccionar el botón de REGISTRAR, acceptas las reglas de la competencia, términos y condiciones de uso y política de privacidad. <br /> 
+        Competencia organizada por la Universidad Interamericana de Puerto Rico, InterEmprende y auspiciada por Coca-Cola Puerto Rico Bottlers, Inc. 
       </p>
   </div>
 
   <div class="form-row mb-5">
+      <div class="col-lg-9 col-md-8 col-sm-7 col-6"></div>
+      
+      <div class="form-group col-lg-3 col-md-4 col-sm-5 col-6">
 
-      <!-- <div class="form-group col-md-10">
-      <input type="checkbox" value="" class="" />
-      <label>He leido los reglamentos de la competencia y estoy de acuerdo con los mismos</label>
-    </div> -->
-      <!-- Submit Button -->
-      <div class="form-group col-md-2">
-          <input type="submit" value="Registrar" class="btn btn-success" />
+        <!-- Rules Button -->
+        <a type="button" href="~/pdf/MichaelCordova.pdf" target="_blank" class="btn btn-success text-white">
+          Reglas
+        </a>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Registrar" class="btn btn-success" />  
       </div>
-      <div class="form-group col-md-2">
-          <input type="submit" value="Reglas" class="btn btn-success" />
-      </div>
-  </div>
+    </div>
 </form>
-
-
-
-<a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.
-
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

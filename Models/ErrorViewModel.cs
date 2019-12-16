@@ -1,6 +1,4 @@
-using System;
-
-namespace RegistroDeCompetencia2019.Models
+namespace RegistroDeCompetencia.Models
 {
     public class ErrorViewModel
     {

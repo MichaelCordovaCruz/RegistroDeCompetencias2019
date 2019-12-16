@@ -1,67 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
+using RegistroDeCompetencia.Data;
+using RegistroDeCompetencia.Models;
+using RegistroDeCompetencia.ViewModels;
 
-using RegistroDeCompetencia2019.Models;
-using RegistroDeCompetencia2019.Data;
-using RegistroDeCompetencia2019.ViewModels;
-
-namespace RegistroDeCompetencia2019.Controllers
+namespace RegistroDeCompetencia.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _context = context;
         }
 
         public async Task<IActionResult> Index()
         {
             return View(new CreateHomeVM{ 
-                Recintos = await _context.Recintos.ToListAsync()
-            });
-        }
-
-        public async Task<IActionResult> Create()
-        {
-            return View(new CreateHomeVM{ 
-                Recintos = await _context.Recintos.ToListAsync()
+                Recintos = await DbContext.instance.SPGetRecintoNames()
             });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Estudiante")] CreateHomeVM homeVM)
+        public async Task<IActionResult> Index([Bind("Estudiante")] CreateHomeVM homeVM)
         {
             if(ModelState.IsValid)
             {
-                try
+                if(await DbContext.instance.SPFindEstudiante(homeVM.Estudiante.Id) == null)
                 {
-                    _context.Estudiantes.Add(homeVM.Estudiante);
-                    _context.SaveChanges();
+                    try
+                    {
+                        await DbContext.instance.SPInsertEstudiante(homeVM.Estudiante);
+                        return RedirectToAction("Index");
+                    }
+                    catch(Exception e)
+                    {
+                        ModelState.AddModelError("", "Error, información entrada no pudo ser guardada. "
+                        + "Contacte a el administrador poder ayudarle.");
+                    }
                 }
-                catch(DbUpdateException)
+                else
                 {
-                    ModelState.AddModelError("", "Unable to save changes. " +
-                    "Try again, and if the problem persists, " +
-                    "see your system administrator.");
-                }
+                    ModelState.AddModelError("", "Ya este número de estudiante esta registrado");
+                } 
+
             }
             else
             {
-                
+                ModelState.AddModelError("", "La información entrada no es valida. Por favor, inténtelo de nuevo");   
             }
-            return RedirectToAction("Index");
+
+            homeVM.Recintos = await DbContext.instance.SPGetRecintoNames();
+            return View(homeVM);
         }
 
         public IActionResult Privacy()
