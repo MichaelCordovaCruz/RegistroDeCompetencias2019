@@ -37,7 +37,7 @@ namespace RegistroDeCompetencia.Data
                 "INSERT INTO Estudiantes (Id, Nombre, ApellidoPaterno, ApellidoMaterno, Email, RecintoId)" +
                 "VALUES (\'{0}\', \'{1}\', \'{2}\', \'{3}\', \'{4}\', \'{5}\')",
                 estudiante.Id, estudiante.Nombre, estudiante.ApellidoPaterno, estudiante.ApellidoMaterno, estudiante.Email, estudiante.RecintoId
-                );
+            );
 
             await connection.ExecuteAsync(query);
         }
