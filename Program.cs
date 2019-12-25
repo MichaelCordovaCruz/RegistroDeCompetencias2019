@@ -25,7 +25,7 @@ namespace RegistroDeCompetencia
                     webBuilder.UseStartup<Startup>()
                     .UseUrls("http://*:"+port);
 
-                    //webBuilder.UseStartup<Startup>();
+                    // webBuilder.UseStartup<Startup>();
                 });
     }
 }

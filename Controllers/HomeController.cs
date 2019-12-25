@@ -36,7 +36,7 @@ namespace RegistroDeCompetencia.Controllers
                     try
                     {
                         await DbContext.instance.SPInsertEstudiante(homeVM.Estudiante);
-                        return RedirectToAction("Index");
+                        return View("Success");
                     }
                     catch(Exception e)
                     {
@@ -57,6 +57,11 @@ namespace RegistroDeCompetencia.Controllers
 
             homeVM.Recintos = await DbContext.instance.SPGetRecintoNames();
             return View(homeVM);
+        }
+
+        public IActionResult Success()
+        {
+            return View();
         }
 
         public IActionResult Privacy()
